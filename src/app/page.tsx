@@ -20,7 +20,13 @@ export default function Home() {
     offset: ["start start", "end end"]
   });
 
-  const xTransform = useTransform(horizontalProgress, [0, 1], ["0%", "-75%"]);
+  const rotateWheel = useTransform(horizontalProgress, [0, 1], [0, -270]);
+  const counterRotate = useTransform(horizontalProgress, [0, 1], [0, 270]);
+
+  const op1 = useTransform(horizontalProgress, [0, 0.15], [1, 0]);
+  const op2 = useTransform(horizontalProgress, [0.15, 0.33, 0.48], [0, 1, 0]);
+  const op3 = useTransform(horizontalProgress, [0.48, 0.66, 0.81], [0, 1, 0]);
+  const op4 = useTransform(horizontalProgress, [0.81, 1], [0, 1]);
 
 
 
@@ -246,76 +252,87 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Horizontal Product Showcase */}
+      {/* Rotating Product Showcase */}
       <section ref={horizontalRef} className="relative h-[400vh] bg-vanilla">
         <div className="sticky top-0 h-screen w-full overflow-hidden bg-vanilla flex items-center">
-          <motion.div style={{ x: xTransform }} className="flex h-full w-[400vw]">
-            
-            {/* Panel 1: Signature Brownies */}
-            <div className="w-screen flex-none h-full flex flex-col md:flex-row items-center justify-center relative p-8 lg:p-24 gap-12">
-              <div className="flex-1 md:pr-12 text-center md:text-left z-10">
-                <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">01. Our Pride</span>
-                <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
-                  Signature <br/><span className="text-caramel italic">Brownies.</span>
-                </h2>
-                <p className="text-milk text-lg font-poppins max-w-md mx-auto md:mx-0 leading-relaxed">
-                  The recipe that started it all. Impossibly fudgy, deeply chocolatey, and made with 70% dark Belgian couverture.
-                </p>
-              </div>
-              <div className="flex-1 h-[50vh] md:h-[80vh] w-full relative rounded-3xl overflow-hidden shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Signature Brownies" />
-              </div>
-            </div>
+          
+          {/* Text Content (Left Side) */}
+          <div className="w-full md:w-1/2 pl-6 pr-6 md:pl-24 relative z-20 h-[300px] md:h-[400px] flex items-center">
+             
+             {/* 01: Brownies */}
+             <motion.div style={{ opacity: op1, pointerEvents: "none" }} className="absolute">
+               <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">01. Our Pride</span>
+               <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
+                 Signature <br/><span className="text-caramel italic">Brownies.</span>
+               </h2>
+               <p className="text-milk text-lg font-poppins max-w-md leading-relaxed">
+                 The recipe that started it all. Impossibly fudgy, deeply chocolatey, and made with 70% dark Belgian couverture.
+               </p>
+             </motion.div>
 
-            {/* Panel 2: Hampers */}
-            <div className="w-screen flex-none h-full flex flex-col md:flex-row items-center justify-center relative p-8 lg:p-24 gap-12">
-              <div className="flex-1 h-[50vh] md:h-[80vh] w-full relative rounded-3xl overflow-hidden shadow-2xl md:order-1 order-2">
-                <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Luxury Hampers" />
-              </div>
-              <div className="flex-1 md:pl-12 text-center md:text-left z-10 md:order-2 order-1">
-                <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">02. Gifting</span>
-                <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
-                  Bespoke <br/><span className="text-caramel italic">Hampers.</span>
-                </h2>
-                <p className="text-milk text-lg font-poppins max-w-md mx-auto md:mx-0 leading-relaxed">
-                  Curated assortments of our finest bakes, elegantly packaged in premium boxes with custom ribbon and handwritten notes.
-                </p>
-              </div>
-            </div>
+             {/* 02: Hampers */}
+             <motion.div style={{ opacity: op2, pointerEvents: "none" }} className="absolute">
+               <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">02. Gifting</span>
+               <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
+                 Bespoke <br/><span className="text-caramel italic">Hampers.</span>
+               </h2>
+               <p className="text-milk text-lg font-poppins max-w-md leading-relaxed">
+                 Curated assortments of our finest bakes, elegantly packaged in premium boxes with custom ribbon and handwritten notes.
+               </p>
+             </motion.div>
 
-            {/* Panel 3: Cakes */}
-            <div className="w-screen flex-none h-full flex flex-col md:flex-row items-center justify-center relative p-8 lg:p-24 gap-12">
-              <div className="flex-1 md:pr-12 text-center md:text-left z-10">
-                <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">03. Milestones</span>
-                <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
-                  Celebration <br/><span className="text-caramel italic">Cakes.</span>
-                </h2>
-                <p className="text-milk text-lg font-poppins max-w-md mx-auto md:mx-0 leading-relaxed">
-                  Towering layers of decadence for your most special moments. From rustic chocolate truffles to elegant floral buttercreams.
-                </p>
-              </div>
-              <div className="flex-1 h-[50vh] md:h-[80vh] w-full relative rounded-3xl overflow-hidden shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Celebration Cakes" />
-              </div>
-            </div>
+             {/* 03: Cakes */}
+             <motion.div style={{ opacity: op3, pointerEvents: "none" }} className="absolute">
+               <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">03. Milestones</span>
+               <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
+                 Celebration <br/><span className="text-caramel italic">Cakes.</span>
+               </h2>
+               <p className="text-milk text-lg font-poppins max-w-md leading-relaxed">
+                 Towering layers of decadence for your most special moments. From rustic chocolate truffles to elegant floral buttercreams.
+               </p>
+             </motion.div>
 
-            {/* Panel 4: Cookie Tins */}
-            <div className="w-screen flex-none h-full flex flex-col md:flex-row items-center justify-center relative p-8 lg:p-24 gap-12">
-              <div className="flex-1 h-[50vh] md:h-[80vh] w-full relative rounded-3xl overflow-hidden shadow-2xl md:order-1 order-2">
-                <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Cookie Tins" />
-              </div>
-              <div className="flex-1 md:pl-12 text-center md:text-left z-10 md:order-2 order-1">
-                <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">04. Anytime</span>
-                <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
-                  Assorted <br/><span className="text-caramel italic">Tins.</span>
-                </h2>
-                <p className="text-milk text-lg font-poppins max-w-md mx-auto md:mx-0 leading-relaxed">
-                  Brown-butter, sea salt, triple chocolate, and stuffed centers. A tin of our cookies is the ultimate midnight indulgence.
-                </p>
-              </div>
-            </div>
+             {/* 04: Tins */}
+             <motion.div style={{ opacity: op4, pointerEvents: "none" }} className="absolute">
+               <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">04. Anytime</span>
+               <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
+                 Assorted <br/><span className="text-caramel italic">Tins.</span>
+               </h2>
+               <p className="text-milk text-lg font-poppins max-w-md leading-relaxed">
+                 Brown-butter, sea salt, triple chocolate, and stuffed centers. A tin of our cookies is the ultimate midnight indulgence.
+               </p>
+             </motion.div>
+          </div>
 
+          {/* The Rotating Wheel (Right Side) */}
+          <motion.div 
+            style={{ 
+              x: "-50%", y: "-50%",
+              rotate: rotateWheel 
+            }} 
+            className="absolute top-1/2 left-[120vw] md:left-[80vw] w-[180vh] h-[180vh] md:w-[150vh] md:h-[150vh] rounded-full border border-caramel/20 z-10"
+          >
+             {/* Product 1: 0 deg (Left Edge) */}
+             <motion.div style={{ rotate: counterRotate }} className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-vanilla bg-vanilla">
+               <img src="https://images.unsplash.com/photo-1605634568603-979929f04128?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Signature Brownies" />
+             </motion.div>
+
+             {/* Product 2: 90 deg (Top Edge) */}
+             <motion.div style={{ rotate: counterRotate }} className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-vanilla bg-vanilla">
+               <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Luxury Hampers" />
+             </motion.div>
+
+             {/* Product 3: 180 deg (Right Edge) */}
+             <motion.div style={{ rotate: counterRotate }} className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-vanilla bg-vanilla">
+               <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Celebration Cakes" />
+             </motion.div>
+
+             {/* Product 4: 270 deg (Bottom Edge) */}
+             <motion.div style={{ rotate: counterRotate }} className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-vanilla bg-vanilla">
+               <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Cookie Tins" />
+             </motion.div>
           </motion.div>
+
         </div>
       </section>
 
