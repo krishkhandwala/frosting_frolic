@@ -205,7 +205,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { name: "Ferrero Rocher Fudge", price: "₹850", tag: "Bestseller", img: "https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=2070&auto=format&fit=crop" },
+              { name: "Ferrero Rocher Fudge", price: "₹850", tag: "Bestseller", img: "https://images.unsplash.com/photo-1605807646983-377bc5a76493?q=80&w=800" },
               { name: "Lotus Biscoff Dream", price: "₹1200", tag: "Trending", img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=1965&auto=format&fit=crop" },
               { name: "Classic Belgian Dark", price: "₹750", tag: "Classic", img: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=800" },
               { name: "Nutella Sea Salt", price: "₹950", tag: "Must Try", img: "https://images.unsplash.com/photo-1579372786545-d24232daf58c?q=80&w=2070&auto=format&fit=crop" }
@@ -291,7 +291,7 @@ export default function Home() {
             Today, we are a premium home-bakery trusted by thousands to sweeten their celebrations. Every box that leaves our studio is a labor of love, designed to make you and your loved ones feel incredibly special.
           </p>
           <div className="flex items-center gap-6">
-            <img src="https://images.unsplash.com/photo-1554721696-6e7e025139a0?q=80&w=200&auto=format&fit=crop" alt="Founder" className="w-16 h-16 rounded-full object-cover" />
+            <img src="/founder.jpg" alt="Bindi Khandwala" className="w-16 h-16 rounded-full object-cover object-top" />
             <div>
               <p className="font-playfair text-xl text-cocoa font-bold">Bindi Khandwala</p>
               <p className="font-poppins text-milk/70 text-sm">Founder, Frosting Frolics</p>
