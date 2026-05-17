@@ -24,9 +24,16 @@ export default function Home() {
   const counterRotate = useTransform(horizontalProgress, [0, 1], [0, 270]);
 
   const op1 = useTransform(horizontalProgress, [0, 0.15], [1, 0]);
+  const y1 = useTransform(horizontalProgress, [0, 0.15], [0, -50]);
+
   const op2 = useTransform(horizontalProgress, [0.15, 0.33, 0.48], [0, 1, 0]);
+  const y2 = useTransform(horizontalProgress, [0.15, 0.33, 0.48], [50, 0, -50]);
+
   const op3 = useTransform(horizontalProgress, [0.48, 0.66, 0.81], [0, 1, 0]);
+  const y3 = useTransform(horizontalProgress, [0.48, 0.66, 0.81], [50, 0, -50]);
+
   const op4 = useTransform(horizontalProgress, [0.81, 1], [0, 1]);
+  const y4 = useTransform(horizontalProgress, [0.81, 1], [50, 0]);
 
 
 
@@ -260,7 +267,7 @@ export default function Home() {
           <div className="w-full md:w-1/2 pl-6 pr-6 md:pl-24 relative z-20 h-[300px] md:h-[400px] flex items-center">
              
              {/* 01: Brownies */}
-             <motion.div style={{ opacity: op1, pointerEvents: "none" }} className="absolute">
+             <motion.div style={{ opacity: op1, y: y1, pointerEvents: "none" }} className="absolute">
                <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">01. Our Pride</span>
                <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
                  Signature <br/><span className="text-caramel italic">Brownies.</span>
@@ -271,7 +278,7 @@ export default function Home() {
              </motion.div>
 
              {/* 02: Hampers */}
-             <motion.div style={{ opacity: op2, pointerEvents: "none" }} className="absolute">
+             <motion.div initial={{ opacity: 0 }} style={{ opacity: op2, y: y2, pointerEvents: "none" }} className="absolute">
                <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">02. Gifting</span>
                <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
                  Bespoke <br/><span className="text-caramel italic">Hampers.</span>
@@ -282,7 +289,7 @@ export default function Home() {
              </motion.div>
 
              {/* 03: Cakes */}
-             <motion.div style={{ opacity: op3, pointerEvents: "none" }} className="absolute">
+             <motion.div initial={{ opacity: 0 }} style={{ opacity: op3, y: y3, pointerEvents: "none" }} className="absolute">
                <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">03. Milestones</span>
                <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
                  Celebration <br/><span className="text-caramel italic">Cakes.</span>
@@ -293,7 +300,7 @@ export default function Home() {
              </motion.div>
 
              {/* 04: Tins */}
-             <motion.div style={{ opacity: op4, pointerEvents: "none" }} className="absolute">
+             <motion.div initial={{ opacity: 0 }} style={{ opacity: op4, y: y4, pointerEvents: "none" }} className="absolute">
                <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">04. Anytime</span>
                <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
                  Assorted <br/><span className="text-caramel italic">Tins.</span>
@@ -314,22 +321,22 @@ export default function Home() {
           >
              {/* Product 1: 0 deg (Left Edge) */}
              <motion.div style={{ rotate: counterRotate }} className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-vanilla bg-vanilla">
-               <img src="https://images.unsplash.com/photo-1605634568603-979929f04128?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Signature Brownies" />
+               <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="" />
              </motion.div>
 
              {/* Product 2: 90 deg (Top Edge) */}
              <motion.div style={{ rotate: counterRotate }} className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-vanilla bg-vanilla">
-               <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Luxury Hampers" />
+               <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="" />
              </motion.div>
 
              {/* Product 3: 180 deg (Right Edge) */}
              <motion.div style={{ rotate: counterRotate }} className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-vanilla bg-vanilla">
-               <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Celebration Cakes" />
+               <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="" />
              </motion.div>
 
              {/* Product 4: 270 deg (Bottom Edge) */}
              <motion.div style={{ rotate: counterRotate }} className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-vanilla bg-vanilla">
-               <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Cookie Tins" />
+               <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="" />
              </motion.div>
           </motion.div>
 
