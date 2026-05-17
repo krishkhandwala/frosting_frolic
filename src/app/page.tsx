@@ -15,7 +15,7 @@ export default function Home() {
 
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.2, 0.8, 0.2, 1] } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
   };
 
   const anatomyRef = useRef<HTMLDivElement>(null);
