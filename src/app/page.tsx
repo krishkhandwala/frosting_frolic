@@ -275,7 +275,17 @@ export default function Home() {
             <img src="https://images.unsplash.com/photo-1556206079-6ca238a221f7?q=80&w=2000&auto=format&fit=crop" alt="The Baking Process" className="w-full h-full object-cover" />
           </div>
           <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full border border-caramel -z-10"></div>
-          <div className="absolute top-1/2 -left-12 w-24 h-24 bg-beige rounded-full -z-10"></div>
+          <div className="absolute top-1/2 -left-12 md:-left-20 w-32 h-32 md:w-40 md:h-40 bg-vanilla rounded-full z-20 shadow-2xl flex items-center justify-center p-2">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-3 border border-dashed border-caramel/50 rounded-full"
+            ></motion.div>
+            <div className="text-center relative z-10">
+              <span className="block font-playfair text-caramel text-2xl md:text-3xl font-bold leading-none">100%</span>
+              <span className="block font-poppins text-cocoa text-[9px] md:text-[11px] uppercase tracking-[0.2em] mt-2 font-medium">Handmade<br/>Mumbai</span>
+            </div>
+          </div>
         </motion.div>
         
         <motion.div 
