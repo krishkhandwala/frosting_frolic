@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
 import { ArrowRight, Star, Camera as Instagram, MapPin, Heart, Gift, ShoppingBag, Quote, Sparkles } from "lucide-react";
 import { useEffect, useRef } from "react";
 
@@ -14,17 +14,17 @@ export default function Home() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
   };
 
-  const anatomyRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress: anatomyProgress } = useScroll({
-    target: anatomyRef,
-    offset: ["start end", "center center"]
-  });
+  const clipSize = useTransform(anatomyProgress, [0, 0.5], ["150%", "20%"]);
+  const clipPath = useMotionTemplate`circle(${clipSize} at 50% 50%)`;
+  
+  const text1Y = useTransform(anatomyProgress, [0.4, 0.6], [50, 0]);
+  const text1Op = useTransform(anatomyProgress, [0.4, 0.6], [0, 1]);
+  
+  const text2Y = useTransform(anatomyProgress, [0.5, 0.7], [50, 0]);
+  const text2Op = useTransform(anatomyProgress, [0.5, 0.7], [0, 1]);
 
-  const doughY = useTransform(anatomyProgress, [0, 1], [-300, 0]);
-  const chunksY = useTransform(anatomyProgress, [0, 1], [-600, 0]);
-  const saltY = useTransform(anatomyProgress, [0, 1], [-900, 0]);
-  const textOpacity = useTransform(anatomyProgress, [0.7, 1], [0, 1]);
-  const scaleCookie = useTransform(anatomyProgress, [0.8, 1], [0.8, 1]);
+  const text3Y = useTransform(anatomyProgress, [0.6, 0.8], [50, 0]);
+  const text3Op = useTransform(anatomyProgress, [0.6, 0.8], [0, 1]);
 
 
 
@@ -250,45 +250,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Interactive Cookie Assembly Section */}
-      <section ref={anatomyRef} className="py-32 bg-vanilla relative overflow-hidden flex flex-col items-center justify-center min-h-[80vh]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(193,154,107,0.05)_0%,transparent_70%)]"></div>
-        
-        <div className="text-center mb-16 relative z-10">
-          <Sparkles className="mx-auto text-caramel mb-4" size={28} />
-          <h2 className="text-4xl md:text-5xl font-playfair text-cocoa">The Anatomy of a Bestseller</h2>
-          <p className="font-poppins text-milk/70 mt-4 max-w-md mx-auto text-sm uppercase tracking-widest">Scroll to assemble perfection</p>
-        </div>
-
-        <div className="relative w-72 h-72 mx-auto mt-10">
-          {/* Dough Base */}
-          <motion.div style={{ y: doughY, scale: scaleCookie }} className="absolute inset-0 bg-[#E8C396] rounded-full shadow-2xl border-4 border-[#D2A679] flex items-center justify-center">
-            <div className="w-full h-full rounded-full opacity-30 bg-[radial-gradient(circle_at_30%_30%,#ffffff_0%,transparent_50%)]"></div>
-          </motion.div>
+      {/* Cinematic Anatomy Section */}
+      <section ref={anatomyRef} className="relative h-[300vh] bg-[#1A0F0D]">
+        <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
           
-          {/* Chocolate Chunks */}
-          <motion.div style={{ y: chunksY, scale: scaleCookie }} className="absolute inset-0 z-10">
-             <div className="absolute top-12 left-12 w-14 h-14 bg-[#3E2723] shadow-inner" style={{borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%"}}></div>
-             <div className="absolute top-28 right-10 w-16 h-12 bg-[#2A1814] shadow-inner" style={{borderRadius: "50% 40% 60% 40% / 60% 50% 40% 60%"}}></div>
-             <div className="absolute bottom-12 left-24 w-12 h-16 bg-[#3E2723] shadow-inner" style={{borderRadius: "30% 70% 50% 50% / 50% 40% 60% 50%"}}></div>
-             <div className="absolute top-8 right-28 w-10 h-10 bg-[#2A1814] shadow-inner" style={{borderRadius: "60% 40% 30% 70% / 50% 60% 40% 50%"}}></div>
-             <div className="absolute bottom-16 right-20 w-12 h-10 bg-[#3E2723] shadow-inner" style={{borderRadius: "70% 30% 50% 50% / 40% 60% 40% 60%"}}></div>
-          </motion.div>
-          
-          {/* Sea Salt */}
-          <motion.div style={{ y: saltY, scale: scaleCookie }} className="absolute inset-0 z-20">
-             <div className="absolute top-16 left-1/2 w-2 h-2 bg-white/90 rotate-45 shadow-sm"></div>
-             <div className="absolute top-1/2 right-16 w-3 h-2 bg-white/90 rotate-12 shadow-sm"></div>
-             <div className="absolute bottom-20 left-1/3 w-2 h-3 bg-white/90 -rotate-12 shadow-sm"></div>
-             <div className="absolute top-24 left-24 w-2 h-2 bg-white/90 rotate-45 shadow-sm"></div>
-             <div className="absolute bottom-1/3 right-1/3 w-2 h-2 bg-white/90 rotate-75 shadow-sm"></div>
-             <div className="absolute top-1/3 left-1/4 w-3 h-2 bg-white/90 -rotate-45 shadow-sm"></div>
-          </motion.div>
-        </div>
+          {/* Background Text that gets revealed */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center z-0 px-6">
+            <h2 className="text-5xl md:text-7xl font-playfair text-vanilla mb-16 text-center">The Anatomy of <br/><span className="text-caramel italic">Perfection</span></h2>
+            
+            <div className="w-full max-w-5xl relative h-[60vh]">
+              <motion.div style={{ opacity: text1Op, y: text1Y }} className="absolute top-[10%] left-[5%] md:left-[10%] max-w-[200px] text-left">
+                <span className="block text-caramel font-poppins text-xs uppercase tracking-widest mb-2">01. The Base</span>
+                <p className="text-vanilla/80 font-playfair text-xl">100% pure French butter, browned to a nutty perfection.</p>
+              </motion.div>
+              
+              <motion.div style={{ opacity: text2Op, y: text2Y }} className="absolute top-[45%] right-[5%] md:right-[10%] max-w-[200px] text-right">
+                <span className="block text-caramel font-poppins text-xs uppercase tracking-widest mb-2">02. The Core</span>
+                <p className="text-vanilla/80 font-playfair text-xl">70% dark Belgian couverture chocolate folded into the batter.</p>
+              </motion.div>
 
-        <motion.div style={{ opacity: textOpacity }} className="mt-16 text-center max-w-lg px-6 relative z-10">
-          <p className="font-playfair text-xl text-cocoa italic">"Brown butter dough, 70% dark Belgian couverture chunks, and a touch of flaky sea salt."</p>
-        </motion.div>
+              <motion.div style={{ opacity: text3Op, y: text3Y }} className="absolute bottom-[10%] left-[5%] md:left-[20%] max-w-[200px] text-left">
+                <span className="block text-caramel font-poppins text-xs uppercase tracking-widest mb-2">03. The Finish</span>
+                <p className="text-vanilla/80 font-playfair text-xl">A delicate dusting of Maldon sea salt flakes to cut the richness.</p>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* The Realistic Chocolate Image Mask */}
+          <motion.div 
+            style={{ clipPath }}
+            className="absolute inset-0 z-10 w-full h-full"
+          >
+            <div className="absolute inset-0 bg-black/40 z-10"></div>
+            <img 
+              src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=2070&auto=format&fit=crop" 
+              className="w-full h-full object-cover object-center"
+              alt="Rich Belgian Chocolate"
+            />
+          </motion.div>
+
+        </div>
       </section>
 
       {/* Process & Ingredients */}
