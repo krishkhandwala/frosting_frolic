@@ -14,6 +14,12 @@ export default function Home() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
   };
 
+  const anatomyRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: anatomyProgress } = useScroll({
+    target: anatomyRef,
+    offset: ["start end", "end end"]
+  });
+
   const clipSize = useTransform(anatomyProgress, [0, 0.5], ["150%", "20%"]);
   const clipPath = useMotionTemplate`circle(${clipSize} at 50% 50%)`;
   
