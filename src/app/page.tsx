@@ -246,66 +246,72 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Cinematic Horizontal Scroll Section */}
-      <section ref={horizontalRef} className="relative h-[400vh] bg-cocoa">
-        <div className="sticky top-0 h-screen w-full overflow-hidden bg-cocoa flex items-center">
+      {/* Horizontal Product Showcase */}
+      <section ref={horizontalRef} className="relative h-[400vh] bg-vanilla">
+        <div className="sticky top-0 h-screen w-full overflow-hidden bg-vanilla flex items-center">
           <motion.div style={{ x: xTransform }} className="flex h-full w-[400vw]">
             
-            {/* Panel 1: Intro */}
-            <div className="w-screen h-full flex flex-col items-center justify-center relative p-12 lg:p-24 overflow-hidden">
-              <div className="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1614088659512-df2914392659?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover opacity-40 mix-blend-overlay" />
-                <div className="absolute inset-0 bg-gradient-to-t from-cocoa via-cocoa/80 to-transparent"></div>
-              </div>
-              <div className="relative z-10 max-w-4xl mx-auto text-center">
-                <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-6">The Anatomy of Perfection</span>
-                <h2 className="text-6xl md:text-8xl lg:text-[7rem] font-playfair text-vanilla leading-tight tracking-tight">
-                  Crafting the <br/><span className="text-caramel italic font-light">Perfect Bite.</span>
+            {/* Panel 1: Signature Brownies */}
+            <div className="w-screen flex-none h-full flex flex-col md:flex-row items-center justify-center relative p-8 lg:p-24 gap-12">
+              <div className="flex-1 md:pr-12 text-center md:text-left z-10">
+                <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">01. Our Pride</span>
+                <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
+                  Signature <br/><span className="text-caramel italic">Brownies.</span>
                 </h2>
-                <p className="mt-8 text-vanilla/70 font-poppins text-lg max-w-xl mx-auto tracking-wide">Scroll to uncover the layers of our signature creation.</p>
+                <p className="text-milk text-lg font-poppins max-w-md mx-auto md:mx-0 leading-relaxed">
+                  The recipe that started it all. Impossibly fudgy, deeply chocolatey, and made with 70% dark Belgian couverture.
+                </p>
+              </div>
+              <div className="flex-1 h-[50vh] md:h-[80vh] w-full relative rounded-3xl overflow-hidden shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Signature Brownies" />
               </div>
             </div>
 
-            {/* Panel 2: The Core */}
-            <div className="w-screen h-full flex items-center justify-center relative p-12 lg:p-24 overflow-hidden">
-              <div className="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover opacity-60" />
-                <div className="absolute inset-0 bg-black/40"></div>
+            {/* Panel 2: Hampers */}
+            <div className="w-screen flex-none h-full flex flex-col md:flex-row items-center justify-center relative p-8 lg:p-24 gap-12">
+              <div className="flex-1 h-[50vh] md:h-[80vh] w-full relative rounded-3xl overflow-hidden shadow-2xl md:order-1 order-2">
+                <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Luxury Hampers" />
               </div>
-              <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
-                <div className="flex-1">
-                  <span className="text-caramel font-poppins text-lg uppercase tracking-widest mb-4 block">01. The Core</span>
-                  <h3 className="text-5xl md:text-7xl font-playfair text-vanilla mb-6 leading-tight">Rich Belgian <br/><span className="italic font-light">Couverture.</span></h3>
-                  <p className="text-vanilla/80 text-lg font-poppins max-w-md leading-relaxed">We fold copious amounts of 70% dark chocolate into our batter, creating molten pockets of fudge that melt perfectly on the tongue.</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Panel 3: The Base */}
-            <div className="w-screen h-full flex items-center justify-center relative p-12 lg:p-24 overflow-hidden">
-              <div className="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover opacity-60" />
-                <div className="absolute inset-0 bg-black/40"></div>
-              </div>
-              <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 justify-end text-right">
-                <div className="flex-1 md:max-w-xl ml-auto">
-                  <span className="text-caramel font-poppins text-lg uppercase tracking-widest mb-4 block">02. The Base</span>
-                  <h3 className="text-5xl md:text-7xl font-playfair text-vanilla mb-6 leading-tight">Nutty Brown <br/><span className="italic font-light">Butter.</span></h3>
-                  <p className="text-vanilla/80 text-lg font-poppins leading-relaxed">Pure French butter slowly simmered until it develops a deep, toasted aroma, providing the foundation for our unbelievably chewy texture.</p>
-                </div>
+              <div className="flex-1 md:pl-12 text-center md:text-left z-10 md:order-2 order-1">
+                <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">02. Gifting</span>
+                <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
+                  Bespoke <br/><span className="text-caramel italic">Hampers.</span>
+                </h2>
+                <p className="text-milk text-lg font-poppins max-w-md mx-auto md:mx-0 leading-relaxed">
+                  Curated assortments of our finest bakes, elegantly packaged in premium boxes with custom ribbon and handwritten notes.
+                </p>
               </div>
             </div>
 
-            {/* Panel 4: The Finish */}
-            <div className="w-screen h-full flex items-center justify-center relative p-12 lg:p-24 overflow-hidden">
-              <div className="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1579372786545-d24232daf58c?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover opacity-50" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A0F0D] via-transparent to-[#1A0F0D]"></div>
+            {/* Panel 3: Cakes */}
+            <div className="w-screen flex-none h-full flex flex-col md:flex-row items-center justify-center relative p-8 lg:p-24 gap-12">
+              <div className="flex-1 md:pr-12 text-center md:text-left z-10">
+                <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">03. Milestones</span>
+                <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
+                  Celebration <br/><span className="text-caramel italic">Cakes.</span>
+                </h2>
+                <p className="text-milk text-lg font-poppins max-w-md mx-auto md:mx-0 leading-relaxed">
+                  Towering layers of decadence for your most special moments. From rustic chocolate truffles to elegant floral buttercreams.
+                </p>
               </div>
-              <div className="relative z-10 max-w-4xl mx-auto text-center">
-                <span className="block text-caramel font-poppins text-lg uppercase tracking-widest mb-6">03. The Finish</span>
-                <h3 className="text-6xl md:text-8xl font-playfair text-vanilla mb-8 leading-tight">Flaky Sea <br/><span className="italic font-light">Salt.</span></h3>
-                <p className="text-vanilla/80 text-xl font-poppins max-w-2xl mx-auto leading-relaxed">A delicate dusting of Maldon salt flakes cuts through the decadence, elevating every bite into a masterpiece.</p>
+              <div className="flex-1 h-[50vh] md:h-[80vh] w-full relative rounded-3xl overflow-hidden shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Celebration Cakes" />
+              </div>
+            </div>
+
+            {/* Panel 4: Cookie Tins */}
+            <div className="w-screen flex-none h-full flex flex-col md:flex-row items-center justify-center relative p-8 lg:p-24 gap-12">
+              <div className="flex-1 h-[50vh] md:h-[80vh] w-full relative rounded-3xl overflow-hidden shadow-2xl md:order-1 order-2">
+                <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Cookie Tins" />
+              </div>
+              <div className="flex-1 md:pl-12 text-center md:text-left z-10 md:order-2 order-1">
+                <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-4">04. Anytime</span>
+                <h2 className="text-5xl md:text-7xl font-playfair text-cocoa leading-tight tracking-tight mb-6">
+                  Assorted <br/><span className="text-caramel italic">Tins.</span>
+                </h2>
+                <p className="text-milk text-lg font-poppins max-w-md mx-auto md:mx-0 leading-relaxed">
+                  Brown-butter, sea salt, triple chocolate, and stuffed centers. A tin of our cookies is the ultimate midnight indulgence.
+                </p>
               </div>
             </div>
 
