@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Star, Camera as Instagram, MapPin, Heart, Gift, ShoppingBag, Quote, Sparkles } from "lucide-react";
 import { useEffect, useRef } from "react";
 
@@ -14,23 +14,13 @@ export default function Home() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
   };
 
-  const anatomyRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress: anatomyProgress } = useScroll({
-    target: anatomyRef,
-    offset: ["start end", "end end"]
+  const horizontalRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: horizontalProgress } = useScroll({
+    target: horizontalRef,
+    offset: ["start start", "end end"]
   });
 
-  const clipSize = useTransform(anatomyProgress, [0, 0.5], ["150%", "20%"]);
-  const clipPath = useMotionTemplate`circle(${clipSize} at 50% 50%)`;
-  
-  const text1Y = useTransform(anatomyProgress, [0.4, 0.6], [50, 0]);
-  const text1Op = useTransform(anatomyProgress, [0.4, 0.6], [0, 1]);
-  
-  const text2Y = useTransform(anatomyProgress, [0.5, 0.7], [50, 0]);
-  const text2Op = useTransform(anatomyProgress, [0.5, 0.7], [0, 1]);
-
-  const text3Y = useTransform(anatomyProgress, [0.6, 0.8], [50, 0]);
-  const text3Op = useTransform(anatomyProgress, [0.6, 0.8], [0, 1]);
+  const xTransform = useTransform(horizontalProgress, [0, 1], ["0%", "-75%"]);
 
 
 
@@ -256,45 +246,70 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Cinematic Anatomy Section */}
-      <section ref={anatomyRef} className="relative h-[300vh] bg-[#1A0F0D]">
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
-          
-          {/* Background Text that gets revealed */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center z-0 px-6">
-            <h2 className="text-5xl md:text-7xl font-playfair text-vanilla mb-16 text-center">The Anatomy of <br/><span className="text-caramel italic">Perfection</span></h2>
+      {/* Cinematic Horizontal Scroll Section */}
+      <section ref={horizontalRef} className="relative h-[400vh] bg-cocoa">
+        <div className="sticky top-0 h-screen w-full overflow-hidden bg-cocoa flex items-center">
+          <motion.div style={{ x: xTransform }} className="flex h-full w-[400vw]">
             
-            <div className="w-full max-w-5xl relative h-[60vh]">
-              <motion.div style={{ opacity: text1Op, y: text1Y }} className="absolute top-[10%] left-[5%] md:left-[10%] max-w-[200px] text-left">
-                <span className="block text-caramel font-poppins text-xs uppercase tracking-widest mb-2">01. The Base</span>
-                <p className="text-vanilla/80 font-playfair text-xl">100% pure French butter, browned to a nutty perfection.</p>
-              </motion.div>
-              
-              <motion.div style={{ opacity: text2Op, y: text2Y }} className="absolute top-[45%] right-[5%] md:right-[10%] max-w-[200px] text-right">
-                <span className="block text-caramel font-poppins text-xs uppercase tracking-widest mb-2">02. The Core</span>
-                <p className="text-vanilla/80 font-playfair text-xl">70% dark Belgian couverture chocolate folded into the batter.</p>
-              </motion.div>
-
-              <motion.div style={{ opacity: text3Op, y: text3Y }} className="absolute bottom-[10%] left-[5%] md:left-[20%] max-w-[200px] text-left">
-                <span className="block text-caramel font-poppins text-xs uppercase tracking-widest mb-2">03. The Finish</span>
-                <p className="text-vanilla/80 font-playfair text-xl">A delicate dusting of Maldon sea salt flakes to cut the richness.</p>
-              </motion.div>
+            {/* Panel 1: Intro */}
+            <div className="w-screen h-full flex flex-col items-center justify-center relative p-12 lg:p-24 overflow-hidden">
+              <div className="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1614088659512-df2914392659?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover opacity-40 mix-blend-overlay" />
+                <div className="absolute inset-0 bg-gradient-to-t from-cocoa via-cocoa/80 to-transparent"></div>
+              </div>
+              <div className="relative z-10 max-w-4xl mx-auto text-center">
+                <span className="block text-caramel font-poppins text-sm uppercase tracking-[0.3em] mb-6">The Anatomy of Perfection</span>
+                <h2 className="text-6xl md:text-8xl lg:text-[7rem] font-playfair text-vanilla leading-tight tracking-tight">
+                  Crafting the <br/><span className="text-caramel italic font-light">Perfect Bite.</span>
+                </h2>
+                <p className="mt-8 text-vanilla/70 font-poppins text-lg max-w-xl mx-auto tracking-wide">Scroll to uncover the layers of our signature creation.</p>
+              </div>
             </div>
-          </div>
 
-          {/* The Realistic Chocolate Image Mask */}
-          <motion.div 
-            style={{ clipPath }}
-            className="absolute inset-0 z-10 w-full h-full"
-          >
-            <div className="absolute inset-0 bg-black/40 z-10"></div>
-            <img 
-              src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?q=80&w=2070&auto=format&fit=crop" 
-              className="w-full h-full object-cover object-center"
-              alt="Rich Belgian Chocolate"
-            />
+            {/* Panel 2: The Core */}
+            <div className="w-screen h-full flex items-center justify-center relative p-12 lg:p-24 overflow-hidden">
+              <div className="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover opacity-60" />
+                <div className="absolute inset-0 bg-black/40"></div>
+              </div>
+              <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+                <div className="flex-1">
+                  <span className="text-caramel font-poppins text-lg uppercase tracking-widest mb-4 block">01. The Core</span>
+                  <h3 className="text-5xl md:text-7xl font-playfair text-vanilla mb-6 leading-tight">Rich Belgian <br/><span className="italic font-light">Couverture.</span></h3>
+                  <p className="text-vanilla/80 text-lg font-poppins max-w-md leading-relaxed">We fold copious amounts of 70% dark chocolate into our batter, creating molten pockets of fudge that melt perfectly on the tongue.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Panel 3: The Base */}
+            <div className="w-screen h-full flex items-center justify-center relative p-12 lg:p-24 overflow-hidden">
+              <div className="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover opacity-60" />
+                <div className="absolute inset-0 bg-black/40"></div>
+              </div>
+              <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 justify-end text-right">
+                <div className="flex-1 md:max-w-xl ml-auto">
+                  <span className="text-caramel font-poppins text-lg uppercase tracking-widest mb-4 block">02. The Base</span>
+                  <h3 className="text-5xl md:text-7xl font-playfair text-vanilla mb-6 leading-tight">Nutty Brown <br/><span className="italic font-light">Butter.</span></h3>
+                  <p className="text-vanilla/80 text-lg font-poppins leading-relaxed">Pure French butter slowly simmered until it develops a deep, toasted aroma, providing the foundation for our unbelievably chewy texture.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Panel 4: The Finish */}
+            <div className="w-screen h-full flex items-center justify-center relative p-12 lg:p-24 overflow-hidden">
+              <div className="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1579372786545-d24232daf58c?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover opacity-50" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1A0F0D] via-transparent to-[#1A0F0D]"></div>
+              </div>
+              <div className="relative z-10 max-w-4xl mx-auto text-center">
+                <span className="block text-caramel font-poppins text-lg uppercase tracking-widest mb-6">03. The Finish</span>
+                <h3 className="text-6xl md:text-8xl font-playfair text-vanilla mb-8 leading-tight">Flaky Sea <br/><span className="italic font-light">Salt.</span></h3>
+                <p className="text-vanilla/80 text-xl font-poppins max-w-2xl mx-auto leading-relaxed">A delicate dusting of Maldon salt flakes cuts through the decadence, elevating every bite into a masterpiece.</p>
+              </div>
+            </div>
+
           </motion.div>
-
         </div>
       </section>
 
