@@ -2,16 +2,12 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Star, Camera as Instagram, MapPin, Heart, Gift, ShoppingBag, Quote, Sparkles } from "lucide-react";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
   const yHero = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
@@ -30,7 +26,7 @@ export default function Home() {
   const textOpacity = useTransform(anatomyProgress, [0.7, 1], [0, 1]);
   const scaleCookie = useTransform(anatomyProgress, [0.8, 1], [0.8, 1]);
 
-  if (!mounted) return null;
+
 
   return (
     <main className="min-h-screen bg-vanilla text-cocoa overflow-hidden">
